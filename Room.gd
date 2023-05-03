@@ -4,11 +4,14 @@ var x
 var y
 var width
 var height
-func _init(x, y, width, height):
+func _init(x, y, width, height,rooms):
 	self.x = x
 	self.y = y
 	self.width = width
 	self.height = height
+	for room in rooms:
+		if check_collide(room):
+			print("collision")
 func get_center():
 	return [(self.x+self.width/2),(self.y+self.height/2)]
 func manhattan_dist(otherRoom):
