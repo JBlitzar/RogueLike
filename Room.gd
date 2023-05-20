@@ -40,6 +40,16 @@ func check_collide_rooms(rooms):
 		if check_collide(room):
 			return true
 	return false
+func get_next_viable_room(rooms):
+	var curRooms = rooms
+	var room = get_closest_room(curRooms)
+	while true:
+		if room in connections:
+			curRooms = curRooms.erase(room)
+			room = get_closest_room(curRooms)
+		else:
+			return room
+		
 func add_connection(room):
 	connections.append(room)
 func connect_room(room):

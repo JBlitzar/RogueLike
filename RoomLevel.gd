@@ -1,6 +1,6 @@
 extends TileMap
 
-var roomAmt = 10
+var roomAmt = 100
 var roomSizeMin = 5
 var roomSizeMax = 10
 var roomWMax = 50
