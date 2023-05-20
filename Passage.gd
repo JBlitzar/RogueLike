@@ -8,10 +8,14 @@ func _init(r1, r2):
 	self.r2 = r2
 	assert(not self.r1.check_collide(self.r2) , "ERROR: Collision check failure");
 func place_tile(x,y, tilemap):
+	print(x,y)
 	tilemap.set_cell(0, Vector2i(x,y), 0, Vector2i(0, 1))
+
 func render_connection(tilemap):
 	var start = self.r1.get_center()
 	var end = self.r2.get_center()
+	self._tiles = []
+	"""
 	#var line = Line2D.new()
 	#line.add_point(Vector2(start[0]*16,start[1]*16))
 	#line.add_point(Vector2(end[0]*16,end[1]*16))
@@ -31,7 +35,7 @@ func render_connection(tilemap):
 			#2 points, x,gapY, nextX,nextgapy
 		prevX = x
 		prevY = gapY
-	"""place_tile(start[0],start[1],tilemap)
+	place_tile(start[0],start[1],tilemap)
 	var curRise = 0
 	var curRun = 1
 	var curX = start[0]
@@ -50,8 +54,32 @@ func render_connection(tilemap):
 		if curX == end[0] and curY == end[1]:
 			break;
 	
+	"""
+	var leastXNode = null
+	var mostXNode = null
+	var leastYNode = null
+	var mostYNode = null
 	
-	for i in range(min(start[0],end[0]),max(start[0],end[0])+1):
-		place_tile(i,min(start[1],end[1]),tilemap)
-	for j in range(min(start[1],end[1]),max(start[1],end[1])):
-		place_tile(min(start[0],end[0]),j,tilemap)"""
+	if start[0] > end[0]:
+		leastXNode = end
+		mostXNode = start
+	else:
+		leastXNode = start
+		mostXNode = end
+	if start[1] > end[1]:
+		leastYNode = end
+		mostYNode = start
+	else:
+		leastYNode = start
+		mostYNode = end
+	
+	for i in range(leastXNode[0],mostXNode[0]+1):
+		place_tile(i,leastYNode[1],tilemap)
+		
+		
+	if leastXNode[1] == leastYNode[1]:
+		for j in range(leastYNode[1],mostYNode[1]+1):
+			place_tile(mostXNode[0],j,tilemap)
+	else:
+		for j in range(leastYNode[1],mostYNode[1]+1):
+			place_tile(leastXNode[0],j,tilemap)
