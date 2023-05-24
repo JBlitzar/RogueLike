@@ -3,18 +3,18 @@ class_name Passage
 
 var r1
 var r2
+var tiles = []
 func _init(r1, r2):
 	self.r1 = r1
 	self.r2 = r2
 	assert(not self.r1.check_collide(self.r2) , "ERROR: Collision check failure");
-func place_tile(x,y, tilemap):
-	print(x,y)
-	tilemap.set_cell(0, Vector2i(x,y), 0, Vector2i(0, 1))
+func place_tile(x,y):
+	tiles.append(NavigationTile.new(x,y,"passage",Vector2i(0,1)))
+	#tilemap.set_cell(0, Vector2i(x,y), 0, Vector2i(0, 1))
 
-func render_connection(tilemap):
+func spawn():
 	var start = self.r1.get_center()
 	var end = self.r2.get_center()
-	self._tiles = []
 	"""
 	#var line = Line2D.new()
 	#line.add_point(Vector2(start[0]*16,start[1]*16))
@@ -74,12 +74,12 @@ func render_connection(tilemap):
 		mostYNode = end
 	
 	for i in range(leastXNode[0],mostXNode[0]+1):
-		place_tile(i,leastYNode[1],tilemap)
+		place_tile(i,leastYNode[1])
 		
 		
 	if leastXNode[1] == leastYNode[1]:
 		for j in range(leastYNode[1],mostYNode[1]+1):
-			place_tile(mostXNode[0],j,tilemap)
+			place_tile(mostXNode[0],j)
 	else:
 		for j in range(leastYNode[1],mostYNode[1]+1):
-			place_tile(leastXNode[0],j,tilemap)
+			place_tile(leastXNode[0],j)
