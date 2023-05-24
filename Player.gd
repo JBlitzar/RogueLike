@@ -13,7 +13,7 @@ func _input(event):
 		vel= Vector2(-1,0)
 	if event.is_action_pressed("right"):
 		vel= Vector2(1,0)
-	print(vel)
+	#print(vel)
 
 func _physics_process(delta):
 	if get_parent().turn == "player" and vel != Vector2(0,0):

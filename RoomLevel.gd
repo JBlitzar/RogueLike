@@ -46,6 +46,13 @@ func _ready():
 	gridObject.renderTiles()
 	$Player.position = map_to_local(Vector2(rooms[0].get_center()[0],rooms[0].get_center()[1]))
 	$Player.playerPos = Vector2(rooms[0].get_center()[0],rooms[0].get_center()[1])
+	
+	
+	gridObject.init_astar()
+	var startEx = gridObject.queryTile(rooms[0].get_center()[0],rooms[0].get_center()[1])
+	var endEx = gridObject.queryTile(rooms[1].get_center()[0],rooms[1].get_center()[1])
+	print(gridObject.astar_path(startEx,endEx))
+	print("hullo")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

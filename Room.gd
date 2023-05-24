@@ -12,7 +12,7 @@ func _init(x, y, width, height):
 	self.width = width
 	self.height = height
 func get_center():
-	return [(self.x+self.width/2),(self.y+self.height/2)]
+	return [round(self.x+self.width/2),round(self.y+self.height/2)]
 func manhattan_dist(otherRoom):
 	#dx+dy
 	return abs(otherRoom.get_center()[0]-self.get_center()[0])+abs(otherRoom.get_center()[1]-self.get_center()[1])
