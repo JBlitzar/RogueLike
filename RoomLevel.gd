@@ -7,6 +7,9 @@ var roomWMax = 50
 var roomHMax = 50
 var rooms = []
 var tiles = []
+var grid = []
+var gridObject
+var turn = "player"
 # Called when the node enters the scene tree for the first time.
 func add_tiles(tilesToAdd):
 	for tile in tilesToAdd:
@@ -14,7 +17,7 @@ func add_tiles(tilesToAdd):
 func add_tile(tile):
 	for checktile in tiles:
 		if checktile.comparepos(tile):
-			checktile.tileContents = tile.tileContents
+			checktile.contents = tile.contents
 			checktile.atlasSprite = tile.atlasSprite
 			
 			return
@@ -39,7 +42,10 @@ func _ready():
 		if passage:
 			passage.spawn()
 			add_tiles(passage.tiles)
-	
+	gridObject = NavigationGrid.new(self,tiles)
+	gridObject.renderTiles()
+	$Player.position = map_to_local(Vector2(rooms[0].get_center()[0],rooms[0].get_center()[1]))
+	$Player.playerPos = Vector2(rooms[0].get_center()[0],rooms[0].get_center()[1])
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
