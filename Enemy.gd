@@ -1,6 +1,7 @@
 extends CharacterBody2D
 var speed = 16
 var target: Vector2 = position
+var grid_position: Vector2
 func _ready():
 	pass
 func _process(delta):

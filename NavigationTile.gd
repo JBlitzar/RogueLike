@@ -4,6 +4,7 @@ var contents: String
 var x
 var y
 var atlasSprite: Vector2i
+var entity
 func _init(x,y,tileContents,atlasSprite):
 	self.contents = tileContents
 	self.x = x

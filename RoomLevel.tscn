@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgodbm0mwjvd8"]
+[gd_scene load_steps=8 format=3 uid="uid://bgodbm0mwjvd8"]
 
 [ext_resource type="Texture2D" uid="uid://cu53mx73gqtnh" path="res://Tiles.png" id="1_014y8"]
 [ext_resource type="Script" path="res://RoomLevel.gd" id="2_1tgja"]
 [ext_resource type="PackedScene" uid="uid://b71dbpjvj0e7x" path="res://Player.tscn" id="3_cavv8"]
+[ext_resource type="Script" path="res://EnemyManager.gd" id="4_0qeqr"]
+[ext_resource type="PackedScene" uid="uid://b2a7pb7q8i7g7" path="res://Enemy.tscn" id="5_p038h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x4n57"]
 resource_name = "Tiles"
@@ -84,3 +86,9 @@ script = ExtResource("2_1tgja")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
+
+[node name="EnemyManager" type="Node" parent="."]
+script = ExtResource("4_0qeqr")
+enemyScene = ExtResource("5_p038h")
+
+[connection signal="input_recieved" from="Player" to="." method="_on_player_input_recieved"]

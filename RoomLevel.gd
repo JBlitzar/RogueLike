@@ -49,12 +49,18 @@ func _ready():
 	
 	
 	gridObject.init_astar()
-	var startEx = gridObject.queryTile(rooms[0].get_center()[0],rooms[0].get_center()[1])
-	var endEx = gridObject.queryTile(rooms[1].get_center()[0],rooms[1].get_center()[1])
-	print(gridObject.astar_path(startEx,endEx))
-	print("hullo")
+	$EnemyManager.generate_enemies(rooms,gridObject)
+	
+	#var startEx = gridObject.queryTile(rooms[0].get_center()[0],rooms[0].get_center()[1])
+	#var endEx = gridObject.queryTile(rooms[1].get_center()[0],rooms[1].get_center()[1])
+	#print(gridObject.astar_path(startEx,endEx))
+	#print("hullo")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_player_input_recieved(playerPos,playerVel):
+	pass # Replace with function body.
