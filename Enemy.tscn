@@ -1,17 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2a7pb7q8i7g7"]
+[gd_scene load_steps=3 format=3 uid="uid://b2a7pb7q8i7g7"]
 
 [ext_resource type="Texture2D" uid="uid://bomqrf1rkedd8" path="res://godot.png" id="1_cqj35"]
 [ext_resource type="Script" path="res://Enemy.gd" id="1_i0d6x"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4rkej"]
-radius = 7.0
-
-[node name="Enemy" type="CharacterBody2D"]
-script = ExtResource("1_i0d6x")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Enemy" type="Sprite2D"]
 texture_filter = 1
 texture = ExtResource("1_cqj35")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_4rkej")
+script = ExtResource("1_i0d6x")

@@ -31,6 +31,7 @@ func connect_astar_points():
 			if checkTile(neighbor.x,neighbor.y):
 				astar.connect_points(cell.cantor_id(),queryTile(neighbor.x,neighbor.y).cantor_id(),false)
 func init_astar():
+	astar = AStar2D.new()
 	add_astar_points()
 	connect_astar_points()
 func astar_path(start,end):

@@ -87,8 +87,10 @@ script = ExtResource("2_1tgja")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
 
-[node name="EnemyManager" type="Node" parent="."]
+[node name="EnemyManager" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("4_0qeqr")
+enemiesperroom_max = 1
 enemyScene = ExtResource("5_p038h")
+player = NodePath("../Player")
 
 [connection signal="input_recieved" from="Player" to="." method="_on_player_input_recieved"]

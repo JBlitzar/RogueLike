@@ -51,6 +51,6 @@ func connect_room(room):
 		var passage = Passage.new(self,room)
 		return passage
 func get_random_cell():
-	return Vector2(randi_range(x+1,x+width-1),randi_range(y+1,y+height-1))
+	return Vector2(randi_range(x+1,x+width-2),randi_range(y+1,y+height-2))
 
 

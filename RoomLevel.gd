@@ -60,7 +60,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
+func advanceEnemies():
+	$EnemyManager.move_enemies(gridObject,self)
 
 func _on_player_input_recieved(playerPos,playerVel):
 	pass # Replace with function body.
