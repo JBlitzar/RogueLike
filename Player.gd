@@ -1,5 +1,6 @@
 extends CharacterBody2D
-
+var health = 1
+@export var damageAmount = 0.1
 var playerPos = Vector2(0,0)
 var vel = Vector2(0,0)
 var target = position
@@ -27,4 +28,7 @@ func _physics_process(delta):
 	#target = get_parent().map_to_local(playerPos)
 	#velocity = position.direction_to(target) * speed
 	#move_and_slide()
+func damage():
+	health -= damageAmount
+	$Control/HealthBar.value = health
 

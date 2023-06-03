@@ -52,5 +52,7 @@ func connect_room(room):
 		return passage
 func get_random_cell():
 	return Vector2(randi_range(x+1,x+width-2),randi_range(y+1,y+height-2))
+func point_in_bbox(Vector2 point):
+	pass
 
 

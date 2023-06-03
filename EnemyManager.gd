@@ -19,6 +19,7 @@ func spawn_enemy(cell,navGrid):
 	add_child(enemyInst)
 	var tileObj = navGrid.queryTile(cell.x, cell.y)
 	tileObj.entity = enemyInst
+	enemyInst.tile = tileObj
 	enemies.append(enemyInst)
 func move_enemies(navGrid,tilemap):
 	navGrid.init_astar()
@@ -35,3 +36,5 @@ func generate_enemies(rooms,navGrid):
 			var newCell = room.get_random_cell()
 			spawn_enemy(newCell,navGrid)
 		#pass# pick a random range of enemies in a room, put them in random positions
+func damage_player():
+	$"../Player".damage()
