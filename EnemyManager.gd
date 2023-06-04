@@ -24,10 +24,18 @@ func spawn_enemy(cell,navGrid):
 func move_enemies(navGrid,tilemap):
 	navGrid.init_astar()
 	for enemy in enemies:
-		var path = navGrid.astar_path(navGrid.queryTile(enemy.grid_position.x,enemy.grid_position.y),navGrid.queryTile(player.playerPos.x,player.playerPos.y))
-		print(path, enemy.grid_position)
-		if Array(path) != []:
-			enemy.goto_next(path,tilemap)
+		if enemy != null:
+			var enemyRoom = navGrid.query_point_to_room(enemy.grid_position,tilemap.rooms)
+			var playerRoom = navGrid.query_point_to_room($"../Player".playerPos,tilemap.rooms)
+			if enemyRoom and playerRoom:
+				if enemyRoom == playerRoom:
+					enemy.aggro()
+					print("mad")
+			if enemy.aggrod:
+				var path = navGrid.astar_path(navGrid.queryTile(enemy.grid_position.x,enemy.grid_position.y),navGrid.queryTile(player.playerPos.x,player.playerPos.y))
+				print(path, enemy.grid_position)
+				if Array(path) != []:
+					enemy.goto_next(path,tilemap)
 	
 
 func generate_enemies(rooms,navGrid):

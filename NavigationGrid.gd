@@ -36,5 +36,8 @@ func init_astar():
 	connect_astar_points()
 func astar_path(start,end):
 	return astar.get_point_path(start.cantor_id(),end.cantor_id())
-func query_point_to_room(rooms):
-	pass
+func query_point_to_room(point,rooms):
+	for room in rooms:
+		if room.point_in_bbox(point):
+			return room
+	return false

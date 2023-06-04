@@ -5,6 +5,7 @@ var grid_position: Vector2
 var tile: NavigationTile
 var health = 1
 @export var damageAmount = 0.1
+var aggrod = false
 #func _ready():
 #	target = position
 #func _process(delta):
@@ -12,6 +13,8 @@ var health = 1
 #	move_and_slide()
 #func advance_next(localX,localY):
 #	target = Vector2(localX,localY)
+func aggro():
+	aggrod = true
 func goto_next(astar_path,tilemap):
 	#position = Vector2(3,3)
 	#position = tilemap.map_to_local(grid_position+Vector2(1,0))
