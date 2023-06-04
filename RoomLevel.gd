@@ -50,6 +50,7 @@ func _ready():
 	
 	gridObject.init_astar()
 	$EnemyManager.generate_enemies(rooms,gridObject)
+	$PowerupManager.generate_powerups(rooms,gridObject)
 	
 	#var startEx = gridObject.queryTile(rooms[0].get_center()[0],rooms[0].get_center()[1])
 	#var endEx = gridObject.queryTile(rooms[1].get_center()[0],rooms[1].get_center()[1])
@@ -62,6 +63,7 @@ func _process(delta):
 	pass
 func advanceEnemies():
 	$EnemyManager.move_enemies(gridObject,self)
+	$PowerupManager.move_powerups(gridObject,self)
 
 func _on_player_input_recieved(playerPos,playerVel):
 	pass # Replace with function body.

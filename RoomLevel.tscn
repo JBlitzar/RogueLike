@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgodbm0mwjvd8"]
+[gd_scene load_steps=10 format=3 uid="uid://bgodbm0mwjvd8"]
 
 [ext_resource type="Texture2D" uid="uid://cu53mx73gqtnh" path="res://Tiles.png" id="1_014y8"]
 [ext_resource type="Script" path="res://RoomLevel.gd" id="2_1tgja"]
 [ext_resource type="PackedScene" uid="uid://b71dbpjvj0e7x" path="res://Player.tscn" id="3_cavv8"]
 [ext_resource type="Script" path="res://EnemyManager.gd" id="4_0qeqr"]
 [ext_resource type="PackedScene" uid="uid://b2a7pb7q8i7g7" path="res://Enemy.tscn" id="5_p038h"]
+[ext_resource type="Script" path="res://PowerupManager.gd" id="6_yqwnt"]
+[ext_resource type="PackedScene" uid="uid://bsa0ncqohq5vm" path="res://Powerup.tscn" id="7_x1jh1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x4n57"]
 resource_name = "Tiles"
@@ -89,8 +91,14 @@ zoom = Vector2(3, 3)
 
 [node name="EnemyManager" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("4_0qeqr")
-enemiesperroom_max = 1
+enemiesperroom_max = 2
 enemyScene = ExtResource("5_p038h")
+player = NodePath("../Player")
+
+[node name="PowerupManager" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("6_yqwnt")
+powerupsperroom_max = 2
+powerupScene = ExtResource("7_x1jh1")
 player = NodePath("../Player")
 
 [connection signal="input_recieved" from="Player" to="." method="_on_player_input_recieved"]

@@ -26,7 +26,7 @@ func move_enemies(navGrid,tilemap):
 	for enemy in enemies:
 		if enemy != null:
 			var enemyRoom = navGrid.query_point_to_room(enemy.grid_position,tilemap.rooms)
-			var playerRoom = navGrid.query_point_to_room($"../Player".playerPos,tilemap.rooms)
+			var playerRoom = navGrid.query_point_to_room(player.playerPos,tilemap.rooms)
 			if enemyRoom and playerRoom:
 				if enemyRoom == playerRoom:
 					enemy.aggro()
@@ -45,4 +45,4 @@ func generate_enemies(rooms,navGrid):
 			spawn_enemy(newCell,navGrid)
 		#pass# pick a random range of enemies in a room, put them in random positions
 func damage_player():
-	$"../Player".damage()
+	player.damage()

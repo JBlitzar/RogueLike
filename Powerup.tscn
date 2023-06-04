@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsa0ncqohq5vm"]
+
+[ext_resource type="Texture2D" uid="uid://b1nqde1vbb3su" path="res://code.png" id="1_ba6ds"]
+[ext_resource type="Script" path="res://Powerup.gd" id="1_qbuh4"]
+
+[node name="Powerup" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_ba6ds")
+script = ExtResource("1_qbuh4")

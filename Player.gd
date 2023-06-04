@@ -31,4 +31,6 @@ func _physics_process(delta):
 func damage():
 	health -= damageAmount
 	$Control/HealthBar.value = health
+func activate_powerup(powerType):
+	pass
 
