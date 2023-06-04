@@ -46,3 +46,7 @@ func generate_enemies(rooms,navGrid):
 		#pass# pick a random range of enemies in a room, put them in random positions
 func damage_player():
 	player.damage()
+func weaken_enemies():
+	for enemy in enemies:
+		if enemy != null:
+			enemy.damageAmount = 0.5

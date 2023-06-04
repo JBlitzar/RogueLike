@@ -32,5 +32,8 @@ func damage():
 	health -= damageAmount
 	$Control/HealthBar.value = health
 func activate_powerup(powerType):
-	pass
+	if powerType == "code":
+		$"../EnemyManager".weaken_enemies()
+	elif powerType == "shield":
+		damageAmount = 0.05
 

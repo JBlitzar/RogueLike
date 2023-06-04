@@ -4,7 +4,7 @@ var target: Vector2
 var grid_position: Vector2
 var tile: NavigationTile
 var health = 1
-@export var damageAmount = 0.5
+@export var damageAmount = 0.3
 var aggrod = false
 #func _ready():
 #	target = position
