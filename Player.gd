@@ -31,6 +31,8 @@ func _physics_process(delta):
 func damage():
 	health -= damageAmount
 	$Control/HealthBar.value = health
+	if health <= 0:
+		get_tree().change_scene("res://Lose.tcsn")
 func activate_powerup(powerType):
 	if powerType == "code":
 		$"../EnemyManager".weaken_enemies()

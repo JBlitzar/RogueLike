@@ -44,9 +44,12 @@ func _ready():
 			add_tiles(passage.tiles)
 	gridObject = NavigationGrid.new(self,tiles)
 	gridObject.renderTiles()
+	
 	$Player.position = map_to_local(Vector2(rooms[0].get_center()[0],rooms[0].get_center()[1]))
 	$Player.playerPos = Vector2(rooms[0].get_center()[0],rooms[0].get_center()[1])
-	
+	var roomI = len(rooms)-1
+	$portal.position = map_to_local(Vector2(rooms[roomI].get_center()[0],rooms[roomI].get_center()[1]))
+	$portal.gridPos = Vector2(rooms[roomI].get_center()[0],rooms[roomI].get_center()[1])
 	
 	gridObject.init_astar()
 	$EnemyManager.generate_enemies(rooms,gridObject)
@@ -64,6 +67,8 @@ func _process(delta):
 func advanceEnemies():
 	$EnemyManager.move_enemies(gridObject,self)
 	$PowerupManager.move_powerups(gridObject,self)
+	if $Player.playerPos == $portal.gridPos:
+		get_tree().change_scene("res://Win.tcsn")
 
 func _on_player_input_recieved(playerPos,playerVel):
 	pass # Replace with function body.

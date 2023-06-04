@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://k232jbsvhx1"]
+
+[ext_resource type="Texture2D" uid="uid://5jnyako6d8qp" path="res://portal.png" id="1_sum08"]
+[ext_resource type="Script" path="res://portal.gd" id="2_cvwd1"]
+
+[node name="portal" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_sum08")
+script = ExtResource("2_cvwd1")
